@@ -72,14 +72,16 @@ export default {
           text: "Species",
           route: "/Species"
         },
-        { icon: "alarm", text: "About", route: "/About" },
+        { icon: "alarm", text: "Login", route: "/Login" },
         {
           icon: "calendar_view_day",
           text: "Classification",
           route: "/classification"
         },
         { icon: "question_answer", text: "Chat", route: "/" },
-        { icon: "person", text: "Login", route: "/" }
+        { icon: "person", text: "Login", route: "/" },
+        { icon: "place", text: "Location", route: "/Location" },
+        { icon: "person_pin", text: "Profile", route: "/Profile" }
       ]
     };
   }

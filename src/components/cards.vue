@@ -103,9 +103,8 @@ import axios from "axios";
 export default {
   data() {
     return {
-      dataSpecies: [],
       search: "",
-      filterWhales: ["Whales", "Dolphins", "Seals"],
+      filterWhales: ["Whales", "Dolphins", "Seals"], // añado todos los valores para que los checkboxes salgan seleccionados
       show: -1 // Le indicamos que será -1 de inicio (no hay ninguna card que sea -1). Por tanto al principio no se despliega.
     };
   },
@@ -125,20 +124,23 @@ export default {
     }
     // itemToShow == index;
   },
-  mounted() {
-    axios // con axios uso arrow function con fetch no!
-      .get("https://api.myjson.com/bins/11rnpb")
-      .then(res => {
-        this.dataSpecies = res.data; // siempre se pone el .data
-        // console.log("Data:jhjh", this.dataSpecies);
-        // console.log(this.dataSpecies, "hellooou");
-      })
+  // mounted() {
+  //   axios // con axios uso arrow function con fetch no!
+  //     .get("https://api.myjson.com/bins/11rnpb")
+  //     .then(res => {
+  //       this.dataSpecies = res.data; // siempre se pone el .data
+  //       // console.log("Data:jhjh", this.dataSpecies);
+  //       // console.log(this.dataSpecies, "hellooou");
+  //     })
 
-      .catch(function(error) {
-        console.log("Error: ", error);
-      });
-  },
+  //     .catch(function(error) {
+  //       console.log("Error: ", error);
+  //     });
+  // },
   computed: {
+    // user() {
+    //   return this.$store.state.ui;
+    // },
     searchField() {
       return this.dataSpecies.filter(specie => {
         let buscador =
@@ -150,10 +152,13 @@ export default {
           );
         let checkbox =
           this.filterWhales.includes(specie.Group) ||
-          this.filterWhales.length == 0;
+          this.filterWhales.length == 0; // o que se muestren todos.
 
         return buscador && checkbox;
       });
+    },
+    dataSpecies() {
+      return this.$store.getters.todasSpecies;
     }
   }
 };

@@ -2,8 +2,9 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Species from "./views/Species.vue";
-import About from "./views/About.vue";
+import Login from "./views/Login.vue";
 import Location from "./views/Location.vue";
+import Profile from "./views/Profile.vue";
 
 
 
@@ -22,14 +23,19 @@ export default new Router({
       component: Species
     },
     {
-      path: "/About",
-      name: "About",
-      component: About
+      path: "/Login",
+      name: "Login",
+      component: Login
     },
     {
       path: "/Location",
       name: "Location",
       component: Location
+    },
+    {
+      path: "/Profile",
+      name: "Profile",
+      component: Profile
     },
 
   ],
