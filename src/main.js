@@ -15,14 +15,15 @@ new Vue({
   store,
   render: h => h(App),
   created() {
+    // Your web app's Firebase configuration
     var firebaseConfig = {
-      apiKey: "AIzaSyAZDcyMS7rBf2G8jHc3FbKiP-74W1YyrIc",
-      authDomain: "chattest11111.firebaseapp.com",
-      databaseURL: "https://chattest11111.firebaseio.com",
-      projectId: "chattest11111",
+      apiKey: "AIzaSyDxG2pAxRlGGEjZWc0yuVOiRHATwbFw5U0",
+      authDomain: "miweb-chatmmm.firebaseapp.com",
+      databaseURL: "https://miweb-chatmmm.firebaseio.com",
+      projectId: "miweb-chatmmm",
       storageBucket: "",
-      messagingSenderId: "195596309105",
-      appId: "1:195596309105:web:25fb527448228b16"
+      messagingSenderId: "1059740350310",
+      appId: "1:1059740350310:web:f344cbe602ce4ecd"
     };
 
     // Initialize Firebase
@@ -31,7 +32,16 @@ new Vue({
     // this.$store.dispatch("createUI");
     this.$store.dispatch("getJson");
 
+    firebase.auth().onAuthStateChanged(user => { //hacemos esto para que al recargar no se desconecte el user
+      if (user) {
+        console.log("Hay usuario");
+        this.$store.commit("setUsers", firebase.auth().currentUser);
+      } else {
+        console.log("No user")
+        this.$store.commit("setUsers", null);
 
+      }
+    })
 
   },
 }).$mount('#app')

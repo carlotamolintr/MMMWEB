@@ -79,12 +79,14 @@
       </v-card-title>
       <!-- Botones-->
       <v-card-actions class="moreOpacity">
-        <v-btn flat color="blue">Share</v-btn>
+        <!-- <v-btn flat color="blue">Share</v-btn> -->
         <v-btn flat v-on:click="select(specie)" color="blue">Wiki Info</v-btn>
 
-        <router-link to="/Location" tag="button">
-          <v-icon flat color="blue" class="ml-5">remove_red_eye</v-icon>
-        </router-link>
+        <v-btn icon @click="eyeCheck(specie)">
+          <v-icon color="blue" flat>{{specie.fav!= true ? 'remove_red_eye' : 'panorama_fish_eye' }}</v-icon>
+        </v-btn>
+        <v-spacer></v-spacer>
+        <!-- <v-spacer></v-spacer> -->
         <v-btn icon @click="arrow(index)">
           <v-icon>{{ show != index ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
           <!--Si se cumple show != index -> pasará lo primero. Sinó lo seguno-->
@@ -121,22 +123,18 @@ export default {
       } else {
         this.show = index;
       }
+    },
+    eyeCheck: function(card) {
+      if (!card.fav) {
+        // si no existe esta propiedad. Me la invento, y equivale a true.
+        card.fav = true;
+      } else {
+        card.fav = false;
+      }
+      this.$forceUpdate(); // Esta función fuerza a que se refresque la información de los ojitos.
     }
-    // itemToShow == index;
   },
-  // mounted() {
-  //   axios // con axios uso arrow function con fetch no!
-  //     .get("https://api.myjson.com/bins/11rnpb")
-  //     .then(res => {
-  //       this.dataSpecies = res.data; // siempre se pone el .data
-  //       // console.log("Data:jhjh", this.dataSpecies);
-  //       // console.log(this.dataSpecies, "hellooou");
-  //     })
 
-  //     .catch(function(error) {
-  //       console.log("Error: ", error);
-  //     });
-  // },
   computed: {
     // user() {
     //   return this.$store.state.ui;

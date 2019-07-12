@@ -11,6 +11,7 @@ export default new Vuex.Store({
     ui: "",
     user: null,
     specie: "",
+    mensaje: "",
   },
   mutations: { // son sets, modifican el state sin tocarlo
     setUsers(state, value) {
@@ -18,7 +19,10 @@ export default new Vuex.Store({
     },
     setSpecies(state, value) {
       state.specie = value
-    }
+    },
+    setMessage(state, value) {
+      state.mensaje = value
+    },
 
 
   },
@@ -37,6 +41,9 @@ export default new Vuex.Store({
   getters: {
     todasSpecies(state) {
       return state.specie;
+    },
+    mensajesChat(state) {
+      return state.mensaje;
     }
   }
 

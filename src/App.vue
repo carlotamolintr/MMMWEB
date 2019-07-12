@@ -17,16 +17,45 @@
 
           <v-list-tile-content class="pl-2">{{link.text}}</v-list-tile-content>
         </v-list-tile>
+
+        <v-list-tile
+          v-if="$store.state.user"
+          v-for="(link ) in loggedIN"
+          :key="link.icon"
+          :to="link.route"
+        >
+          <!--Iconos-->
+          <v-icon>{{link.icon}}</v-icon>
+          <v-list-tile-content class="pl-2">{{link.text}}</v-list-tile-content>
+        </v-list-tile>
       </v-list>
     </v-navigation-drawer>
 
     <v-toolbar app flat fixed dark>
       <!-- Menú completo -->
       <v-toolbar-side-icon @click.native.stop="sideNav =! sideNav" class="hidden-sm-and-up"></v-toolbar-side-icon>
-      <v-toolbar-title>CETMED</v-toolbar-title>
+      <v-toolbar-title>MMM</v-toolbar-title>
       <v-flex xs1>
         <v-img :src="require('@/assets/killer-whale.png')" contain height="50px" width="100px"></v-img>
       </v-flex>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <router-link to="/Login" tag="v-btn">
+        <v-btn width="100px" v-if="$store.state.user == null" flat>
+          SIGN IN
+          <v-icon right>lock</v-icon>
+        </v-btn>
+      </router-link>
+
+      <v-btn width="100px" v-if="$store.state.user" flat @click="logOut()">
+        SIGN OUT
+        <v-icon right>exit_to_app</v-icon>
+      </v-btn>
+
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
         <v-btn flat v-for="(link, i) in links" :key="i" :to="link.route">
@@ -49,9 +78,9 @@
     <v-content class="parallax letterFont">
       <router-view></router-view>
 
-      <footer>
+      <!-- <footer>
         <p>Icon made by [author link] from www.flaticon.com</p>
-      </footer>
+      </footer>-->
     </v-content>
   </v-app>
 </template> 
@@ -60,6 +89,7 @@
 
 
 <script>
+import firebase from "firebase";
 export default {
   data() {
     return {
@@ -72,18 +102,33 @@ export default {
           text: "Species",
           route: "/Species"
         },
-        { icon: "alarm", text: "Login", route: "/Login" },
+
         {
           icon: "calendar_view_day",
           text: "Classification",
           route: "/classification"
         },
-        { icon: "question_answer", text: "Chat", route: "/" },
-        { icon: "person", text: "Login", route: "/" },
-        { icon: "place", text: "Location", route: "/Location" },
-        { icon: "person_pin", text: "Profile", route: "/Profile" }
+
+        { icon: "place", text: "Location", route: "/Location" }
+      ],
+      loggedIN: [
+        { icon: "person_pin", text: "Profile", route: "/Profile" },
+        { icon: "question_answer", text: "Chat", route: "/Chat" }
       ]
     };
+  },
+  methods: {
+    logOut: function() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$store.state.user = null; // Sign-out successful.
+        })
+        .catch(function(error) {
+          console.log("error loggout"); // An error happened.
+        });
+    }
   }
 };
 </script>
@@ -110,5 +155,9 @@ export default {
 
 .aleta {
   padding-right: 25px;
+}
+
+.singIn {
+  margin-left: 30%;
 }
 </style>
