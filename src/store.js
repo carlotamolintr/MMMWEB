@@ -20,9 +20,7 @@ export default new Vuex.Store({
     setSpecies(state, value) {
       state.specie = value
     },
-    setMessage(state, value) {
-      state.mensaje = value
-    },
+
 
 
   },
@@ -42,9 +40,7 @@ export default new Vuex.Store({
     todasSpecies(state) {
       return state.specie;
     },
-    mensajesChat(state) {
-      return state.mensaje;
-    }
+
   }
 
 });
