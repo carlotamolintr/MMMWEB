@@ -67,9 +67,6 @@
               <p>Scientific Name:</p>
               <h4>{{specie.ScientificName}}</h4>
             </v-layout>
-
-            <!-- <td>{{specie.image}}uu</td> -->
-
             <div v-show="specie.AlternateCommonName !== undefined">Alternative Common Name:</div>
             <div v-for="sp in specie.AlternateCommonName" :key="sp.AlternateCommonName">
               <ul class="pList">{{sp}}</ul>
@@ -77,7 +74,7 @@
           </v-flex>
         </v-flex>
       </v-card-title>
-      <!-- Botones-->
+      <!-- Buttons-->
       <v-card-actions class="moreOpacity">
         <!-- <v-btn flat color="blue">Share</v-btn> -->
         <v-btn flat v-on:click="select(specie)" color="blue">Wiki Info</v-btn>

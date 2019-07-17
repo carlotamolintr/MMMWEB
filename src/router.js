@@ -7,6 +7,7 @@ import Logout from "./views/Logout.vue";
 import Location from "./views/Location.vue";
 import Profile from "./views/Profile.vue";
 import Chat from "./views/Chat.vue";
+import Map from "./views/Map.vue";
 
 
 
@@ -49,6 +50,11 @@ export default new Router({
       path: "/Chat",
       name: "Chat",
       component: Chat
+    },
+    {
+      path: "/Map",
+      name: "Map",
+      component: Map
     },
 
   ],

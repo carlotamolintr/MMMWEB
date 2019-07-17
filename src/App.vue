@@ -109,7 +109,8 @@ export default {
           route: "/classification"
         },
 
-        { icon: "place", text: "Location", route: "/Location" }
+        { icon: "place", text: "Location", route: "/Location" },
+        { icon: "map", text: "Map", route: "/Map" }
       ],
       loggedIN: [
         { icon: "person_pin", text: "Profile", route: "/Profile" },

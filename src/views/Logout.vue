@@ -9,7 +9,7 @@
 
 <script>
 import firebase from "firebase";
-import firebaseui from "firebaseui";
+
 let ui;
 export default {
   data: function() {

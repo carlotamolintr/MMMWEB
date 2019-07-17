@@ -32,6 +32,8 @@ new Vue({
     // this.$store.dispatch("createUI");
     this.$store.dispatch("getJson");
 
+
+    // para mantenerse logeado
     firebase.auth().onAuthStateChanged(user => { //hacemos esto para que al recargar no se desconecte el user
       if (user) {
         console.log("Hay usuario");

@@ -1,66 +1,44 @@
 <template>
-  <v-content fluid fill-height>
+  <v-content class="paddingTop" fluid fill-height>
     <v-layout align-center justify-center>
-      <v-flex xs12 sm8 md4>
-        <v-card class="elevation-12" color="primary lighten-4">
-          <v-toolbar dark color="primary darken-1">
-            <v-toolbar-title>Chat</v-toolbar-title>
-          </v-toolbar>
-
-          <div id="mensajes" ref="chat" class="logs" v-for="(m, index) in mensajes" :key="index">
+      <v-flex xs12 sm8 md4 fill-height class="backgroundColor">
+        <v-toolbar class="elevation-12" dark color="primary darken-1">
+          <v-toolbar-title>Chat</v-toolbar-title>
+        </v-toolbar>
+        <v-card class="logs" color="primary lighten-4" height="480px">
+          <div id="mensajes" ref="chat" v-for="(m, index) in mensajes" :key="index">
             <!-- <v-layout v-if="m.name != user"></v-layout> -->
-            <div right class="ma-2 pa-2 user-bubble user-bubble:after right">
-              <p>{{m.name}} wrote:</p>
-              <p>{{m.text}}</p>
+            <div
+              v-if="m.name != loggedName"
+              left
+              class="ma-3 pa-3 user-bubble user-bubble:after right"
+            >
+              <v-flex>{{m.name}} wrote:</v-flex>
+              <v-flex>{{m.text}}</v-flex>
+            </div>
+
+            <div v-else="loggedName" right class="ma-3 pa-3 user-bubble2 user-bubble:after left">
+              <v-flex>{{m.name}} wrote:</v-flex>
+              <v-flex>{{m.text}}</v-flex>
             </div>
           </div>
         </v-card>
-
-        <v-text-field xs12 v-model="text"></v-text-field>
-        <v-btn @click="sendMessage()"></v-btn>
+        <div fill-height class="elevation-12">
+          <v-text-field
+            auto-grow
+            textarea
+            rows="2"
+            placeholder="Enter something..."
+            class="colorWriting"
+            oscrollable
+            xs12
+            v-model="text"
+          ></v-text-field>
+          <v-btn dark color="primary darken-1" @click="sendMessage()">Send</v-btn>
+        </div>
       </v-flex>
     </v-layout>
   </v-content>
-  <!-- </v-layout>
-    <v-flex xs12 id="mensajes">
-      <div v-for="m in mensajes" :key="m">
-        <p>{{m.text}}</p>
-
-        <p>{{m.name}}</p>
-      </div>
-    </v-flex>
-
-    <v-text-field xs12 v-model="text"></v-text-field>
-    <v-btn @click="sendMessage()"></v-btn>
-  </v-content>-->
-
-  <!-- <v-container fluid fill-height>
-    <v-layout align-center justify-center>
-      <v-flex xs12 sm8 md4>
-        <v-card class="elevation-12" color="primary lighten-4">
-          <v-toolbar dark color="primary darken-1">
-            <v-toolbar-title>Chat</v-toolbar-title>
-          </v-toolbar>
-          <v-card-text>
-            <v-list>
-              <template v-for="m in mensajes">
-                <v-subheader v-if="item" :key="m">{{ m.name }}</v-subheader>
-
-                <v-subheader :key="m">{{m.text}}</v-subheader>
-              </template>
-            </v-list>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn @click="sendMessage()"></v-btn>
-            <v-text-field v-model="text" label="Message" single-line solo-inverted></v-text-field>
-            <v-btn fab dark small color="primary">
-              <v-icon dark>send</v-icon>
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>-->
 </template>
 
 <script>
@@ -72,7 +50,6 @@ export default {
   }),
   methods: {
     sendMessage: function() {
-      //   var text = document.getElementById("text").value;
       let name = firebase.auth().currentUser.displayName; // Que imprima la variable name
       let objectToSend = {
         text: this.text, // si key and value son iguales, solamente hay que poner uno.
@@ -95,6 +72,7 @@ export default {
           // el on es como un eventlistener
           this.mensajes = Object.values(data.val());
         });
+      console.log(this.mensajes);
     }
   },
   computed: {
@@ -109,37 +87,72 @@ export default {
 </script>
 
 <style>
+.backgroundColor {
+  background-color: #caf0f3 !important;
+  z-index: 1;
+}
+.paddingTop {
+  padding-top: 10px !important;
+}
 .positionBlocked {
   position: absolute;
   bottom: 40%;
 }
 .logs {
-  height: 100px;
   overflow: auto;
 }
+.scroll {
+  overflow: auto;
+}
+.p {
+  margin: 0;
+  width: 95% !important;
+}
+.colorWriting {
+  color: black;
+  width: 80%;
+  margin-left: 2%;
+}
 
-/* User-bubble */
+/* User-bubble contenedor*/
 
 .user-bubble {
   position: relative;
-  background: #00aabb;
+  background: #00abbb;
   border-radius: 0.4em;
   width: 60%;
   min-height: 10%;
+  word-wrap: break-word;
+  white-space: normal;
+  height: auto;
 }
 
+.user-bubble2 {
+  position: relative;
+  background: #af62ab;
+  border-radius: 0.4em;
+  width: 60%;
+  min-height: 10%;
+  word-wrap: break-word;
+  white-space: normal;
+  height: auto;
+}
+/* User bubble arrow*/
 .user-bubble:after {
   content: "";
   position: absolute;
-  right: 0;
-  top: 50%;
+  border-style: solid;
+  border-width: 18px 12px 0;
+  border-color: #00abbb transparent;
+  display: block;
   width: 0;
-
-  border: 22px solid transparent;
-  border-left-color: #00aabb;
-  border-right: 0;
-  border-bottom: 0;
-  margin-left: -20px;
-  margin-bottom: -20px;
+  z-index: 1;
+  bottom: -15px;
+  left: 190px;
 }
+
+/*autoscroll mensajes*/
+/* #mensajes {
+  overflow-y: auto;
+} */
 </style>
