@@ -1,36 +1,49 @@
 <template>
-  <v-container fluid fill-height justify-start>
-    <form>
-      <v-flex xs5 sm3 d-flex>
+  <v-container fluid fill-height justify-start row>
+    <v-card width="100%" height="80%" class="card-Box">
+      <v-flex xs12 class="pa-4">
+        <v-btn color="blue" v-on:click="gpsLocation()" class="ml-5">add gps location</v-btn>
+
         <v-text-field
+          v-show="location == true"
+          label="Latitude"
+          readonly
+          class="latLonBox"
+          v-model="lat"
+        ></v-text-field>
+        <v-text-field
+          v-show="location == true"
+          label="Longitude"
+          readonly
+          class="latLonBox"
+          v-model="lon"
+        ></v-text-field>
+        <p>{{error}}</p>
+        <v-layout xs12></v-layout>
+      </v-flex>
+
+      <v-flex xs12 sm3>
+        <v-text-field
+          xs12
           :items="numberIndividuals"
           :counter="3"
           label="Number Individuals"
           required
+          class="pa-4"
           type="number"
         ></v-text-field>
       </v-flex>
-      <v-flex xs12 sm6 d-flex>
-        <v-select v-model="specie" :items="Specie" label="Specie" required></v-select>
+      <v-flex xs12 sm6>
+        <v-select class="pa-4" v-model="specie" :items="Specie" label="Specie" required></v-select>
       </v-flex>
-
-      <input @click="sendData()" type="button" value="enviar" />
-    </form>
-    <v-layout xs12 column>
-      <h1>Locatiojn page</h1>
-      <v-btn color="blue" v-on:click="gpsLocation()" class="ml-5">add gps location</v-btn>
-      <p>Lat = {{lat}} Lon ={{lon}}</p>
-      <p>{{error}}</p>
-      <v-layout xs12></v-layout>
-    </v-layout>
-    <div>
-      <v-flex v-for="(prueba, index) in registro" :key="index">{{prueba}}</v-flex>
-    </div>
+      <v-flex xs12 sm6>
+        <v-btn align center @click="sendData()" type="button" color="primary" value="enviar">Send</v-btn>
+      </v-flex>
+    </v-card>
   </v-container>
 </template>
 
 <script>
-// import leaflet from "leaflet";
 import firebase from "firebase";
 export default {
   data: () => ({
@@ -41,13 +54,15 @@ export default {
     numberIndividuals: "",
     items: ["Item 1", "Item 2", "Item 3", "Item 4"],
     specie: "",
-    registro: ""
+    registro: "",
+    location: false
   }),
 
   methods: {
     gpsLocation: function() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(this.showPosition);
+        this.location = true;
       } else {
         this.error = "Geolocation is not supported.";
       }
@@ -69,6 +84,21 @@ export default {
         .database()
         .ref("dataCet") //Mi nueva base de datos se llama dataCet
         .push(x); //hago push de mi variable
+
+      // limpia los botones para volver a enviar otro formulario. Los pongo de nuevo en blanco.
+      this.lat = "";
+      this.lon = "";
+      this.Specie = "";
+      this.location = false;
+    },
+    getDataLocation() {
+      firebase
+        .database()
+        .ref("dataCet")
+        .on("value", data => {
+          this.registro = Object.values(data.val());
+        });
+      console.log("heheheh");
     }
   },
   created() {
@@ -80,35 +110,18 @@ export default {
 
 <style>
 /*Map boxes*/
+.card-Box {
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.822) !important;
+  padding: 20px;
+}
 
+.latLonBox {
+  margin: 0;
+}
 #mapid {
   /*necesita la almohadilla para funcionar*/
   height: 50% !important;
   width: 90% !important;
 }
-/* .container {
-  display: flex;
-  flex-direction: column-reverse;
-  min-height: 800px;
-}
-
-.picBox {
-  flex: 5;
-  background-image: url(https://placeimg.com/1000/1000/tech);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.mapBox {
-  flex: 5;
-  position: relative;
-  border: 1px solid red;
-}
-
-.infoBox {
-  flex: 20;
-  border: 1px solid blue;
-  display: none;
-} */
 </style>

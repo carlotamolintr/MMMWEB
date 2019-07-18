@@ -40,7 +40,9 @@ export default new Vuex.Store({
     todasSpecies(state) {
       return state.specie;
     },
-
+    nombreUsuario(state) {
+      return state.user;
+    }
   }
 
 });

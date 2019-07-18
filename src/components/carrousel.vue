@@ -1,5 +1,5 @@
 <template>
-  <v-carousel hide-delimiters height="250px">
+  <v-carousel hide-delimiters height="260px">
     <v-carousel-item v-for="trip in trips" :src="trip.imageUrl" :key="trip.id">
       <div class="title">{{trip.title}}</div>
     </v-carousel-item>

@@ -7,9 +7,9 @@
 
           <!-- si no hay imagen, mostrar avatar -->
         </v-avatar>
-        <v-card-text class="text-xs-center white">
+        <v-card-text v-for="user in dataUser" :key="user" class="text-xs-center white">
           <!-- <h6 class="category text-gray font-weight-thin mb-3">{{displayName}}</h6> -->
-          <h4 class="card-title font-weight-light">Pepito</h4>
+          <h4 class="card-title font-weight-light">{{user.displayName}}</h4>
           <p class="font-weight-light text-xs-center">
             sndgfjdfnjgbdfjn gndf gdjf
             sfgijdf
@@ -25,7 +25,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    dataUser() {
+      return this.$store.getters.user;
+    }
+  }
+};
 </script>
 
 <style>

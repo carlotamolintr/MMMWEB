@@ -3,7 +3,6 @@ import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Species from "./views/Species.vue";
 import Login from "./views/Login.vue";
-import Logout from "./views/Logout.vue";
 import Location from "./views/Location.vue";
 import Profile from "./views/Profile.vue";
 import Chat from "./views/Chat.vue";
@@ -30,11 +29,7 @@ export default new Router({
       name: "Login",
       component: Login
     },
-    {
-      path: "/Logout",
-      name: "Logout",
-      component: Logout
-    },
+
     {
       path: "/Location",
       name: "Location",

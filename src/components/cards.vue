@@ -98,7 +98,7 @@
 
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 export default {
   data() {
     return {
@@ -153,7 +153,7 @@ export default {
       });
     },
     dataSpecies() {
-      return this.$store.getters.todasSpecies;
+      return this.$store.getters.todasSpecies; // getters para coger la información del storage.
     }
   }
 };
