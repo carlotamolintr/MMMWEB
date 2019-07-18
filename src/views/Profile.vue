@@ -3,21 +3,22 @@
     <v-layout justify-center wrap>
       <material-card class="v-card-profile">
         <v-avatar slot="offset" class="mx-auto d-block" size="130">
-          <!-- <v-img src=""></v-img> route to the image -->
-
+          <v-img v-if="dataUser.photoURL !=null" :src="dataUser.photoURL"></v-img>
+          <!-- :src para cuando quiero poner una variable en src="variable"-->
+          <!-- route to the image-->
           <!-- si no hay imagen, mostrar avatar -->
         </v-avatar>
-        <v-card-text v-for="user in dataUser" :key="user" class="text-xs-center white">
-          <!-- <h6 class="category text-gray font-weight-thin mb-3">{{displayName}}</h6> -->
-          <h4 class="card-title font-weight-light">{{user.displayName}}</h4>
-          <p class="font-weight-light text-xs-center">
+        <v-card-text class="text-xs-center white">
+          <h6 class="category text-gray font-weight-thin mb-3">{{dataUser.displayName}}</h6>
+          <h4 class="card-title font-weight-light">{{}}</h4>
+          <!-- <p class="font-weight-light text-xs-center">
             sndgfjdfnjgbdfjn gndf gdjf
             sfgijdf
             gdfgdfg
             fdgd
             fag
             dafh
-          </p>
+          </p>-->
         </v-card-text>
       </material-card>
     </v-layout>
@@ -28,11 +29,14 @@
 export default {
   computed: {
     dataUser() {
-      return this.$store.getters.user;
+      return this.$store.getters.nombreUsuario;
     }
   }
 };
 </script>
 
 <style>
+.h6 {
+  font-family: ;
+}
 </style>

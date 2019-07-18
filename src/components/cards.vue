@@ -80,7 +80,10 @@
         <v-btn flat v-on:click="select(specie)" color="blue">Wiki Info</v-btn>
 
         <v-btn icon @click="eyeCheck(specie)">
-          <v-icon color="blue" flat>{{specie.fav!= true ? 'remove_red_eye' : 'panorama_fish_eye' }}</v-icon>
+          <v-icon
+            :class="{'blue--text': specie.fav == true, 'grey--text': !specie.fav || specie.fav == false}"
+            flat
+          >{{specie.fav!= true ? 'remove_red_eye' : 'remove_red_eye' }}</v-icon>
         </v-btn>
         <v-spacer></v-spacer>
         <!-- <v-spacer></v-spacer> -->
@@ -153,7 +156,7 @@ export default {
       });
     },
     dataSpecies() {
-      return this.$store.getters.todasSpecies; // getters para coger la información del storage.
+      return this.$store.getters.todasSpecies; // getters para coger la información del storage. DataSpecies actua ahora como una variable.
     }
   }
 };
