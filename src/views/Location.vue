@@ -1,4 +1,4 @@
-<template>
+<template >
   <v-container fluid fill-height justify-start row>
     <v-card width="100%" height="80%" class="card-Box">
       <v-flex xs12 class="pa-4">
@@ -36,6 +36,20 @@
       <v-flex xs12 sm6>
         <v-select class="pa-4" v-model="specie" :items="Specie" label="Specie" required></v-select>
       </v-flex>
+      <v-flex></v-flex>
+
+      <template v-slot:activator="{ on }">
+        <v-text-field
+          v-model="date"
+          label="Picker without buttons"
+          prepend-icon="event"
+          readonly
+          v-on="on"
+        ></v-text-field>
+
+        <v-date-picker v-model="date" @input="menu2 = false"></v-date-picker>
+      </template>
+
       <v-flex xs12 sm6>
         <v-btn align center @click="sendData()" type="button" color="primary" value="enviar">Send</v-btn>
       </v-flex>
@@ -55,7 +69,9 @@ export default {
     items: ["Item 1", "Item 2", "Item 3", "Item 4"],
     specie: "",
     registro: "",
-    location: false
+    location: false,
+    date: new Date().toISOString().substr(0, 10),
+    menu2: false
   }),
 
   methods: {
