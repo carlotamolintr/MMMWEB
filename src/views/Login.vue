@@ -30,6 +30,7 @@ export default {
 
           if (user) {
             this.$store.commit("setUsers", firebase.auth().currentUser); // En el store mediante el setUsers se guards nuestros datos de autentificación.
+            window.location = "/Profile"; //redirige a esta página
           }
         });
       console.log("login");

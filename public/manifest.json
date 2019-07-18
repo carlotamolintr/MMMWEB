@@ -1,9 +1,9 @@
 {
-  "name": "miweb",
-  "short_name": "miweb",
+  "name": "Mediterranean Marine Mammals",
+  "short_name": "MMM",
   "icons": [
     {
-      "src": "./img/icons/android-chrome-192x192.png",
+      "src": "@/assets/killer-whale.png",
       "sizes": "192x192",
       "type": "image/png"
     },
