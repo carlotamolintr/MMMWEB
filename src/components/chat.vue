@@ -2,45 +2,48 @@
   <v-content class="paddingTop" fluid fill-height>
     <v-layout align-center justify-center>
       <v-flex xs12 sm8 md4 fill-height class="backgroundColor">
-        <v-toolbar class="elevation-12" dark color="primary darken-1">
+        <v-toolbar class="elevation-12" dark color="light-blue darken-4">
           <v-toolbar-title>Chat</v-toolbar-title>
         </v-toolbar>
-        <v-card class="logs" height="480px" id="parent">
+        <v-card class="logs" height="460px" id="parent">
           <div id="mensajes" ref="chat" v-for="(m, index) in mensajes" :key="index">
             <!--Mensajes de los otros. si el m.name es desigual a el usuario que hay en el storage, tiene una clase.-->
             <div
               v-if="m.name != loggedName"
               left
-              class="ma-3 pa-3 user-bubble user-bubble:after right"
+              class="ma-3 pa-3 user-bubble user-bubble:after left"
             >
               <v-flex>{{m.name}} wrote:</v-flex>
               <v-flex>{{m.text}}</v-flex>
             </div>
             <!--Mensajes del usuario. si el m.name es igual a el usuario que hay en el storage, tiene otra clase-->
-            <div v-else right class="ma-3 pa-3 user-bubble2 user-bubble2:after left">
+            <div v-else right class="ma-3 pa-3 user-bubble2 user-bubble2:after right">
               <v-flex>{{m.name}} wrote:</v-flex>
               <v-flex>{{m.text}}</v-flex>
             </div>
           </div>
         </v-card>
 
-        <div fill-height class="elevation-12 color-boxSumbit">
-          <v-flex fill-height justify-start height="150px">
+        <div fluid fill-height class="elevation-12 color-boxSumbit">
+          <v-layout row wrap>
             <!--@keyup.enter permite enviar el mensjae clickando enter-->
-
-            <v-text-field
-              auto-grow
-              textarea
-              rows="2"
-              placeholder="Enter something..."
-              class="colorWriting pa-3"
-              xs12
-              width="100%"
-              v-model="text"
-              @keyup.enter="sendMessage()"
-            ></v-text-field>
-          </v-flex>
-          <v-btn dark align-center class="primary darken-1 ml-2" @click="sendMessage()">Send</v-btn>
+            <v-flex xs10>
+              <v-text-field
+                xs4
+                textarea
+                rows="1"
+                placeholder="Enter something..."
+                class="colorWriting pa-3"
+                v-model="text"
+                @keyup.enter="sendMessage()"
+              ></v-text-field>
+            </v-flex>
+            <v-flex xs1>
+              <v-btn dark xs1 icon width="10%" class="primary darken-1 mt-4" @click="sendMessage()">
+                <v-icon class="pl-1">send</v-icon>
+              </v-btn>
+            </v-flex>
+          </v-layout>
         </div>
       </v-flex>
     </v-layout>
@@ -117,7 +120,7 @@ export default {
 }
 .logs {
   overflow: auto;
-  background-color: #88dbf073 !important;
+  background-color: #f4f7f8b4 !important;
 }
 
 .p {
@@ -126,18 +129,19 @@ export default {
 }
 .colorWriting {
   color: black;
-  width: 80%;
+  /* width: 60%; */
   margin-left: 2%;
 }
 .color-boxSumbit {
   background-color: white;
+  margin: 0;
 }
 
 /* User-bubble contenedor*/
 
 .user-bubble {
   position: relative;
-  background: #88dbf0;
+  background: #b3e5fc;
   border-radius: 0.4em;
   width: 60%;
   min-height: 10%;
@@ -148,7 +152,7 @@ export default {
 
 .user-bubble2 {
   position: relative;
-  background: #95e9c1;
+  background: #4fc3f7;
   border-radius: 0.4em;
   width: 60%;
   min-height: 10%;
@@ -162,7 +166,7 @@ export default {
   position: absolute;
   border-style: solid;
   border-width: 18px 12px 0;
-  border-color: #88dbf0 transparent;
+  border-color: #b3e5fc transparent;
   display: block;
   width: 0;
   z-index: 1;
@@ -174,7 +178,7 @@ export default {
   position: absolute;
   border-style: solid;
   border-width: 18px 12px 0;
-  border-color: #95e9c1 transparent;
+  border-color: #4fc3f7 transparent;
   display: block;
   width: 0;
   z-index: 1;

@@ -104,13 +104,13 @@ export default {
 /* Contenedor Login*/
 
 .title-login {
-  color: #fff;
+  color: 002747;
   text-align: center;
   font-size: 24px;
 }
 
 .box-transparent {
-  background-color: rgba(250, 246, 246, 0.411);
+  background-color: rgba(250, 246, 246, 0.849);
   height: 150px;
 }
 .contenedor {

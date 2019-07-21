@@ -31,7 +31,7 @@ export default {
 
 <style>
 h1 {
-  color: white !important;
+  color: #002747 !important;
   text-align: center;
   margin-top: 2%;
   margin-bottom: 3%;
@@ -47,7 +47,7 @@ p {
 }
 .box-text {
   border-radius: 25px;
-  background-color: rgba(255, 255, 255, 0.37) !important;
+  background-color: rgb(255, 255, 255) !important;
   padding: 20px;
   text-align: justify;
 }

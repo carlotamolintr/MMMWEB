@@ -31,7 +31,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar app flat fixed dark>
+    <v-toolbar app flat fixed dark class="light-blue darken-4">
       <!-- Menú completo -->
       <v-toolbar-side-icon @click.native.stop="sideNav =! sideNav" class="hidden-sm-and-up"></v-toolbar-side-icon>
       <v-toolbar-title>MMM</v-toolbar-title>
@@ -110,7 +110,7 @@ export default {
         },
 
         { icon: "place", text: "Add Location", route: "/Location" },
-        { icon: "map", text: "Map", route: "/Map" }
+        { icon: "map", text: "Sighting map", route: "/Map" }
       ],
       loggedIN: [
         { icon: "person_pin", text: "Profile", route: "/Profile" },

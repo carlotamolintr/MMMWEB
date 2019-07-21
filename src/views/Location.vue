@@ -1,7 +1,8 @@
 <template >
   <v-container fluid fill-height justify-start row>
-    <v-card width="100%" height="80%" class="card-Box">
+    <v-card width="100%" class="card-Box">
       <v-flex xs12 class="pa-4">
+        <h1>Locate your sighting</h1>
         <v-btn color="blue" v-on:click="gpsLocation()" class="ml-5">add gps location</v-btn>
 
         <v-text-field
@@ -25,6 +26,7 @@
       <v-flex xs12 sm3>
         <v-text-field
           xs12
+          v-model="numberIndividuals"
           :items="numberIndividuals"
           :counter="3"
           label="Number Individuals"
@@ -37,19 +39,29 @@
         <v-select class="pa-4" v-model="specie" :items="Specie" label="Specie" required></v-select>
       </v-flex>
       <v-flex></v-flex>
-
-      <template v-slot:activator="{ on }">
-        <v-text-field
-          v-model="date"
-          label="Picker without buttons"
-          prepend-icon="event"
-          readonly
-          v-on="on"
-        ></v-text-field>
-
+      <v-menu
+        v-model="menu2"
+        :close-on-content-click="false"
+        :nudge-right="40"
+        lazy
+        transition="scale-transition"
+        offset-y
+        full-width
+        min-width="290px"
+      >
+        <!-- <template v-slot:activator="{ on }"> -->
+        <template v-slot:activator="{ on }">
+          <v-text-field
+            v-model="date"
+            label="Picker without buttons"
+            prepend-icon="event"
+            readonly
+            v-on="on"
+          ></v-text-field>
+        </template>
         <v-date-picker v-model="date" @input="menu2 = false"></v-date-picker>
-      </template>
-
+        <!-- </template> -->
+      </v-menu>
       <v-flex xs12 sm6>
         <v-btn align center @click="sendData()" type="button" color="primary" value="enviar">Send</v-btn>
       </v-flex>
@@ -64,14 +76,21 @@ export default {
     error: " ",
     lat: " ",
     lon: " ",
-    Specie: ["bottlenose", "pilot whale", "sperm whale"],
+    Specie: [
+      "Bottlenose dolphin",
+      "Pilot whale",
+      "Sperm whale",
+      "Fin whale",
+      "Common dolphin",
+      "Killer whale"
+    ],
     numberIndividuals: "",
-    items: ["Item 1", "Item 2", "Item 3", "Item 4"],
-    specie: "",
     registro: "",
     location: false,
     date: new Date().toISOString().substr(0, 10),
-    menu2: false
+    items: ["Item 1", "Item 2", "Item 3", "Item 4"],
+    menu2: false,
+    specie: ""
   }),
 
   methods: {
@@ -93,7 +112,8 @@ export default {
         lat: this.lat,
         lon: this.lon,
         specie: this.specie,
-        numberIndividuals: this.numberIndividuals
+        numberIndividuals: this.numberIndividuals,
+        date: this.date
       };
 
       firebase
@@ -102,10 +122,13 @@ export default {
         .push(x); //hago push de mi variable
 
       // limpia los botones para volver a enviar otro formulario. Los pongo de nuevo en blanco.
+
       this.lat = "";
       this.lon = "";
-      this.Specie = "";
+      this.numberIndividuals = "";
+      this.specie = "";
       this.location = false;
+      this.date = new Date().toISOString().substr(0, 10);
     },
     getDataLocation() {
       firebase
@@ -120,6 +143,11 @@ export default {
   created() {
     this.getDataLocation();
     // this.getMap();
+  },
+  computed: {
+    dataSpecies() {
+      return this.$store.getters.todasSpecies; // getters para coger la información del storage. DataSpecies actua ahora como una variable.
+    }
   }
 };
 </script>

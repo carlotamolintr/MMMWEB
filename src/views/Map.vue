@@ -1,13 +1,16 @@
 <template>
-  <v-container fluid fill-height justify-start>
-    <v-layout column>
-      <!-- <v-btn @click="getMap();"></v-btn> -->
-      <div id="mapid"></div>
+  <v-container fill-height row>
+    <v-layout row wrap fill-height>
+      <v-flex xs12 height="500px" fill-height fluid>
+        <h1>Sighting map</h1>
 
-      <!-- <div>
-        <v-flex v-for="(prueba, index) in registro" :key="index">{{prueba}}</v-flex>
-      </div>-->
+        <div align-center id="mapid" class="ma-1"></div>
+      </v-flex>
     </v-layout>
+
+    <!-- <div>
+        <v-flex v-for="(prueba, index) in registro" :key="index">{{prueba}}</v-flex>
+    </div>-->
   </v-container>
 </template>
 
@@ -18,7 +21,7 @@ export default {
     error: " ",
     lat: " ",
     lon: " ",
-    Specie: ["bottlenose", "pilot whale", "sperm whale"],
+    // Specie: ["bottlenose", "pilot whale", "sperm whale"],
     numberIndividuals: "",
     items: ["Item 1", "Item 2", "Item 3", "Item 4"],
     specie: "",
@@ -32,16 +35,37 @@ export default {
   methods: {
     /* Print my map on the page*/
     getMap() {
-      var map = L.map("mapid").setView([38.875, 1.828], 1); // ([lat,lon], zoom)
+      var map = L.map("mapid").setView([41.3976, 2.149], 4); // ([lat,lon], zoom)
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
 
+      //añado mis coordenadas guardadas en firebase:
+
       this.registro.forEach(m => {
-        L.marker([m.lat, m.lon]).addTo(map);
+        L.marker([m.lat, m.lon])
+          .addTo(map)
+          .bindPopup(
+            "<p class='popupText'>Specie: " +
+              m.specie +
+              "</p>" +
+              "<p class='popupText'>Number of individuals: " +
+              m.numberIndividuals +
+              "</p>" +
+              "<p class='popupText'> Date: " +
+              m.date +
+              "</p>"
+          )
+          .openPopup();
       });
+
+      // var circleMarker = L.circleMarker({
+      //   color: "#ff33f5"
+      // }).addTo(map);
+
+      //Otra forma de hacerlo:
 
       //   for (let i = 0; i < this.registro.length; i++) {
 
@@ -51,21 +75,6 @@ export default {
       //   }
     },
 
-    /* add markers on the page*/
-    // addMarker() {
-    //   var mymap = L.map("mapid").setView([36.723, -3.7083], 13);
-    //   L.tileLayer(
-    //     "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}",
-    //     {
-    //       attribution:
-    //         'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    //       maxZoom: 18,
-    //       id: "mapbox.streets",
-    //       accessToken: "your.mapbox.access.token"
-    //     }
-    //   ).addTo(map);
-    //   console.log("my markers");
-    // },
     /* Databse from firebase that contains my saved locations*/
     getDataLocation() {
       firebase
@@ -81,8 +90,6 @@ export default {
   created() {},
   mounted() {
     this.getDataLocation();
-    // this.getMap();
-    // this.addMarker();
   }
 };
 </script>
@@ -92,8 +99,15 @@ export default {
 
 #mapid {
   /*necesita la almohadilla para funcionar*/
-  height: 50% !important;
-  width: 90% !important;
+  height: 70% !important;
+  width: 97% !important;
   z-index: 0 !important;
+}
+.leaflet-popup-content {
+  width: 200px;
+}
+
+.popupText {
+  width: 100%;
 }
 </style>
