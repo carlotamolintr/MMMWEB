@@ -79,7 +79,7 @@
         <!-- <v-btn flat color="blue">Share</v-btn> -->
         <v-btn flat v-on:click="select(specie)" color="blue">Wiki Info</v-btn>
 
-        <v-btn icon @click="eyeCheck(specie)">
+        <v-btn icon @click="eyeCheck(specie, index)">
           <v-icon
             :class="{'blue--text': specie.fav == true, 'grey--text': !specie.fav || specie.fav == false}"
             flat
@@ -101,13 +101,14 @@
 
 
 <script>
-// import axios from "axios";
+import firebase from "firebase";
 export default {
   data() {
     return {
       search: "",
       filterWhales: ["Whales", "Dolphins", "Seals"], // añado todos los valores para que los checkboxes salgan seleccionados
-      show: -1 // Le indicamos que será -1 de inicio (no hay ninguna card que sea -1). Por tanto al principio no se despliega.
+      show: -1, // Le indicamos que será -1 de inicio (no hay ninguna card que sea -1). Por tanto al principio no se despliega.
+      like: []
     };
   },
 
@@ -124,10 +125,24 @@ export default {
         this.show = index;
       }
     },
-    eyeCheck: function(card) {
+    eyeCheck: function(card, i) {
+      let userId = firebase.auth().currentUser.uid;
+      let like = {
+        commonName: this.dataSpecies[i].AcceptedCommonName,
+        ScientificName: this.dataSpecies[i].ScientificName,
+        photo: this.dataSpecies[i].image
+      };
       if (!card.fav) {
-        // si no existe esta propiedad. Me la invento, y equivale a true.
-        card.fav = true;
+        card.fav = true; // si no existe esta propiedad. Me la invento, y equivale a true.
+        if (!this.like.includes(this.dataSpecies[i].AcceptedCommonName)) {
+          // Guardo mis favoritos
+          firebase
+            .database()
+            .ref("/usersLike/" + userId) //Mi nueva base de datos se llama dataLike
+            .push(like);
+        } else {
+          console.log("already included");
+        }
       } else {
         card.fav = false;
       }
@@ -143,6 +158,7 @@ export default {
       return this.dataSpecies.filter(specie => {
         let buscador =
           specie.ScientificName.toLowerCase().includes(
+            // para comparar paso los dos a minúsculas
             this.search.toLowerCase()
           ) ||
           specie.AcceptedCommonName.toLowerCase().includes(

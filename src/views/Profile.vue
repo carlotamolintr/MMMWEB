@@ -11,6 +11,9 @@
         <v-card-text class="text-xs-center">
           <h6 class="name">{{dataUser.displayName}}</h6>
           <!-- <h4 class="card-title font-weight-light">{{}}</h4> -->
+
+          <v-btn @click="getFavs"></v-btn>
+          <v-card v-for="f in favs" :key="f.commonName">{{f.commonName}}</v-card>
         </v-card-text>
       </material-card>
     </v-card>
@@ -18,11 +21,38 @@
 </template>
 
 <script>
+import firebase from "firebase";
 export default {
+  data: () => ({
+    favs: ""
+  }),
+  methods: {
+    getFavs() {
+      // Obtengo mis favoritos
+      let userId = firebase.auth().currentUser.uid;
+      console.log(userId);
+      firebase
+        .database()
+        .ref("usersLike/" + userId)
+        // .equalTo("userID")
+        // .equalTo("/JLW9WkbpHiNnQNYfyi0DrWhRtG92")
+        .on("value", data => {
+          // el on es como un eventlistener
+          this.favs = Object.values(data.val());
+        });
+      console.log(this.favs);
+    }
+  },
   computed: {
     dataUser() {
       return this.$store.getters.nombreUsuario;
+    },
+    UserID() {
+      return this.$store.state.user.uid;
     }
+  },
+  created() {
+    // this.getFavs;
   }
 };
 </script>

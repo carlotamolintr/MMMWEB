@@ -5,7 +5,7 @@
         <v-toolbar class="elevation-12" dark color="light-blue darken-4">
           <v-toolbar-title>Chat</v-toolbar-title>
         </v-toolbar>
-        <v-card class="logs" height="460px" id="parent">
+        <v-card class="logs" height="460px" id="parent" fluid fill-height>
           <div id="mensajes" ref="chat" v-for="(m, index) in mensajes" :key="index">
             <!--Mensajes de los otros. si el m.name es desigual a el usuario que hay en el storage, tiene una clase.-->
             <div
@@ -13,12 +13,20 @@
               left
               class="ma-3 pa-3 user-bubble user-bubble:after left"
             >
-              <v-flex>{{m.name}} wrote:</v-flex>
+              <v-layout row wrap>
+                <v-avatar left size="26px">
+                  <!-- <v-img :src="m.avatar"></v-img> -->
+                </v-avatar>
+                <v-flex right>{{m.name}}:</v-flex>
+              </v-layout>
               <v-flex>{{m.text}}</v-flex>
             </div>
             <!--Mensajes del usuario. si el m.name es igual a el usuario que hay en el storage, tiene otra clase-->
             <div v-else right class="ma-3 pa-3 user-bubble2 user-bubble2:after right">
-              <v-flex>{{m.name}} wrote:</v-flex>
+              <v-avatar size="36px">
+                <v-img :src="m.avatar"></v-img>
+              </v-avatar>
+              <v-flex>{{m.name}}:</v-flex>
               <v-flex>{{m.text}}</v-flex>
             </div>
           </div>
@@ -60,9 +68,11 @@ export default {
   methods: {
     sendMessage: function() {
       let name = firebase.auth().currentUser.displayName; // Que imprima la variable name
+      let avatar = firebase.aut().currentUser.photoURL;
       let objectToSend = {
         text: this.text, // si key and value son iguales, solamente hay que poner uno.
-        name: name
+        name: name,
+        avatar: this.firebase.aut().currentUser.photoURL
       };
       console.log(objectToSend);
 
@@ -148,6 +158,7 @@ export default {
   word-wrap: break-word;
   white-space: normal;
   height: auto;
+  font-size: 14px;
 }
 
 .user-bubble2 {
@@ -159,6 +170,7 @@ export default {
   word-wrap: break-word;
   white-space: normal;
   height: auto;
+  font-size: 14px;
 }
 /* User bubble arrow*/
 .user-bubble:after {

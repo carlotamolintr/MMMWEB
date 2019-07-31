@@ -36,6 +36,7 @@ export default {
     /* Print my map on the page*/
     getMap() {
       var map = L.map("mapid").setView([41.3976, 2.149], 4); // ([lat,lon], zoom)
+      var myIcon = L.divIcon({ className: "my-div-icon" });
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:

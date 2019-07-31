@@ -44,17 +44,6 @@
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
-      <router-link to="/Login" tag="v-btn">
-        <v-btn width="100px" v-if="$store.state.user == null" flat>
-          SIGN IN
-          <v-icon right>lock</v-icon>
-        </v-btn>
-      </router-link>
-
-      <v-btn width="100px" v-if="$store.state.user" flat @click="logOut()">
-        SIGN OUT
-        <v-icon right>exit_to_app</v-icon>
-      </v-btn>
 
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
@@ -72,6 +61,17 @@
           <v-flex>{{link.text}}</v-flex>
         </v-btn>
       </v-toolbar-items>
+      <router-link to="/Login" tag="v-btn">
+        <v-btn width="100px" v-if="$store.state.user == null" flat>
+          SIGN IN
+          <v-icon right>lock</v-icon>
+        </v-btn>
+      </router-link>
+
+      <v-btn width="100px" v-if="$store.state.user" flat @click="logOut()">
+        SIGN OUT
+        <v-icon right>exit_to_app</v-icon>
+      </v-btn>
     </v-toolbar>
 
     <!-- Body : -->
@@ -95,18 +95,12 @@ export default {
     return {
       sideNav: false,
       links: [
-        { icon: "home", text: "Home", route: "/Home" },
+        { icon: "home", text: "Home", route: "/" },
         {
           icon: require("./assets/whale-fin-icon.svg"),
           icon2: require("./assets/whale-fin-icon.png"),
           text: "Species",
           route: "/Species"
-        },
-
-        {
-          icon: "calendar_view_day",
-          text: "Classification",
-          route: "/classification"
         },
 
         { icon: "place", text: "Add Location", route: "/Location" },
