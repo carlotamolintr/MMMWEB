@@ -1,6 +1,6 @@
-# Mediterranean Marine Mammals
+# Mediterranean Marine Mammals webApp
 
-See website here:
+See website here: https://mediterranean-marine-mammals.netlify.app/
 
 ## Project setup
 ```
