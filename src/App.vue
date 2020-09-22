@@ -18,12 +18,7 @@
           <v-list-tile-content class="pl-2">{{link.text}}</v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile
-          v-if="$store.state.user"
-          v-for="(link ) in loggedIN"
-          :key="link.icon"
-          :to="link.route"
-        >
+        <v-list-tile v-if="$store.state.user" v-for="(link ) in loggedIN" :key="link.icon" :to="link.route">
           <!--Iconos-->
           <v-icon>{{link.icon}}</v-icon>
           <v-list-tile-content class="pl-2">{{link.text}}</v-list-tile-content>
@@ -83,76 +78,94 @@
       </footer>-->
     </v-content>
   </v-app>
-</template> 
+</template>
 
 
 
 
 <script>
-import firebase from "firebase";
-export default {
-  data() {
-    return {
-      sideNav: false,
-      links: [
-        { icon: "home", text: "Home", route: "/" },
-        {
-          icon: require("./assets/whale-fin-icon.svg"),
-          icon2: require("./assets/whale-fin-icon.png"),
-          text: "Species",
-          route: "/Species"
-        },
+  import firebase from "firebase";
+  export default {
+    data() {
+      return {
+        sideNav: false,
+        links: [{
+            icon: "home",
+            text: "Home",
+            route: "/"
+          },
+          {
+            icon: require("./assets/whale-fin-icon.svg"),
+            icon2: require("./assets/whale-fin-icon.png"),
+            text: "Species",
+            route: "/Species"
+          },
 
-        { icon: "place", text: "Add Location", route: "/Location" },
-        { icon: "map", text: "Sighting map", route: "/Map" }
-      ],
-      loggedIN: [
-        { icon: "person_pin", text: "Profile", route: "/Profile" },
-        { icon: "question_answer", text: "Chat", route: "/Chat" }
-      ]
-    };
-  },
-  methods: {
-    logOut: function() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          this.$store.state.user = null; // Sign-out successful.
-        })
-        .catch(function(error) {
-          console.log("error loggout"); // An error happened.
-        });
+          {
+            icon: "place",
+            text: "Add Location",
+            route: "/Location"
+          },
+          {
+            icon: "map",
+            text: "Sighting map",
+            route: "/Map"
+          }
+        ],
+        loggedIN: [{
+            icon: "person_pin",
+            text: "Profile",
+            route: "/Profile"
+          },
+          {
+            icon: "question_answer",
+            text: "Chat",
+            route: "/Chat"
+          }
+        ]
+      };
+    },
+    methods: {
+      logOut: function () {
+        firebase
+          .auth()
+          .signOut()
+          .then(() => {
+            this.$store.state.user = null; // Sign-out successful.
+          })
+          .catch(function (error) {
+            console.log("error loggout"); // An error happened.
+          });
+      }
     }
-  }
-};
+  };
 </script>
 
 <style>
-.parallax {
-  /* The image used */
-  background-image: url("./assets/background-image.jpg");
-  background-color: rgb(158, 222, 233);
+  .parallax {
+    /* The image used */
+    background-image: url("./assets/background-image.jpg");
+    background-color: rgb(158, 222, 233);
 
-  /* Set a specific height */
-  /* height: 500px; */
+    /* Set a specific height */
+    /* height: 500px; */
 
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: repeat;
-  background-size: cover;
-}
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+  }
 
-.letterFont {
-  font-family: "Oswald", sans-serif;
-}
+  .letterFont {
+    font-family: "Oswald", sans-serif;
+  }
 
-.aleta {
-  padding-right: 25px;
-}
+  .aleta {
+    padding-right: 25px;
+  }
 
-.singIn {
-  margin-left: 30%;
-}
+  .singIn {
+    margin-left: 30%;
+  }
 </style>
