@@ -7,7 +7,7 @@
       <v-list>
         <v-list-tile v-for="(link, index) in links" :key="link.icon" :to="link.route">
           <!--Iconos-->
-          <v-icon v-if="index != 1">{{link.icon}}</v-icon>
+          <v-icon v-if="index != 1">{{ link.icon }}</v-icon>
           <v-flex xs1 v-else>
             <v-avatar size="24">
               <!-- Icono aleta caudal -->
@@ -15,20 +15,24 @@
             </v-avatar>
           </v-flex>
 
-          <v-list-tile-content class="pl-2">{{link.text}}</v-list-tile-content>
+          <v-list-tile-content class="pl-2">{{
+            link.text
+          }}</v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile v-if="$store.state.user" v-for="(link ) in loggedIN" :key="link.icon" :to="link.route">
+        <v-list-tile v-if="$store.state.user" v-for="link in loggedIN" :key="link.icon" :to="link.route">
           <!--Iconos-->
-          <v-icon>{{link.icon}}</v-icon>
-          <v-list-tile-content class="pl-2">{{link.text}}</v-list-tile-content>
+          <v-icon>{{ link.icon }}</v-icon>
+          <v-list-tile-content class="pl-2">{{
+            link.text
+          }}</v-list-tile-content>
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
 
     <v-toolbar app flat fixed dark class="light-blue darken-4">
       <!-- Menú completo -->
-      <v-toolbar-side-icon @click.native.stop="sideNav =! sideNav" class="hidden-sm-and-up"></v-toolbar-side-icon>
+      <v-toolbar-side-icon @click.native.stop="sideNav = !sideNav" class="hidden-sm-and-up"></v-toolbar-side-icon>
       <v-toolbar-title>MMM</v-toolbar-title>
       <v-flex xs1>
         <v-img :src="require('@/assets/killer-whale.png')" contain height="50px" width="100px"></v-img>
@@ -46,14 +50,14 @@
           <!--icono aleta caudal-->
 
           <!--Iconos-->
-          <v-icon v-if="i != 1">{{link.icon}}</v-icon>
+          <v-icon v-if="i != 1">{{ link.icon }}</v-icon>
           <v-flex class="aleta" xs1 v-else>
             <v-avatar size="24">
               <!-- Icono aleta caudal -->
               <v-img mr-3 v-bind:src="link.icon"></v-img>
             </v-avatar>
           </v-flex>
-          <v-flex>{{link.text}}</v-flex>
+          <v-flex>{{ link.text }}</v-flex>
         </v-btn>
       </v-toolbar-items>
       <router-link to="/Login" tag="v-btn">
@@ -92,37 +96,37 @@
         links: [{
             icon: "home",
             text: "Home",
-            route: "/"
+            route: "/",
           },
           {
             icon: require("./assets/whale-fin-icon.svg"),
             icon2: require("./assets/whale-fin-icon.png"),
             text: "Species",
-            route: "/Species"
+            route: "/Species",
           },
 
           {
             icon: "place",
             text: "Add Location",
-            route: "/Location"
+            route: "/Location",
           },
           {
             icon: "map",
             text: "Sighting map",
-            route: "/Map"
-          }
+            route: "/Map",
+          },
         ],
         loggedIN: [{
             icon: "person_pin",
             text: "Profile",
-            route: "/Profile"
+            route: "/Profile",
           },
           {
             icon: "question_answer",
             text: "Chat",
-            route: "/Chat"
-          }
-        ]
+            route: "/Chat",
+          },
+        ],
       };
     },
     methods: {
@@ -136,8 +140,8 @@
           .catch(function (error) {
             console.log("error loggout"); // An error happened.
           });
-      }
-    }
+      },
+    },
   };
 </script>
 

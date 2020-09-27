@@ -28,9 +28,9 @@ export default new Vuex.Store({
     // createUI(context) {
     //   context.state.ui = new firebaseui.auth.AuthUI(firebase.auth());
     // },
-    getJson(context) {
-      axios // con axios uso arrow function con fetch no!
-        .get("https://run.mocky.io/v3/68a9f68f-062d-458d-9b7f-28761a733046")
+    async getJson(context) {
+      await axios // con axios uso arrow function con fetch no!
+        .get("http://localhost:8080/species.json")
 
         .then(response => (context.commit("setSpecies", response.data)))
       console.log("jbgj")
