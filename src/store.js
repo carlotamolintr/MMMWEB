@@ -30,7 +30,7 @@ export default new Vuex.Store({
     // },
     async getJson(context) {
       await axios // con axios uso arrow function con fetch no!
-        .get("http://localhost:8080/species.json")
+        .get("https://run.mocky.io/v3/3ed9a783-f7ee-4e3a-a3a4-e8900cfbd422")
 
         .then(response => (context.commit("setSpecies", response.data)))
       console.log("jbgj")

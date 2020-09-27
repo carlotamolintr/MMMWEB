@@ -95,8 +95,8 @@
     },
     props: {
       dataSpecies: {
-        type: Array,
-        default: () => []
+        type: Object,
+        default: () => {}
       }
     },
     methods: {
@@ -142,7 +142,7 @@
       //   return this.$store.state.ui;
       // },
       searchField() {
-        return this.dataSpecies.filter((specie) => {
+        return this.dataSpecies.species.filter((specie) => {
           let buscador =
             specie.ScientificName.toLowerCase().includes(
               // para comparar paso los dos a minúsculas

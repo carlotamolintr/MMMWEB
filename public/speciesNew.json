@@ -1,18 +1,21 @@
  {
      "species": [{
+             "Group": "Whales",
              "ScientificName": "Balaenoptera physalus",
-             "AcceptedCommonName": "fin whale",
+             "AcceptedCommonName": "Fin whale",
+             "KingdomName": "Animalia",
              "FamilyName": "Balaenopteridae",
              "FamilyCommonName": "baleen whales",
+             "FamilyRank": 990430,
              "IsSuperseded": false,
              "TaxonomyAuthor": "(Linnaeus, 1758)",
              "AlternateCommonName": [
-                 "common rorqual",
-                 "razorback",
-                 "herring whale",
-                 "finner",
-                 "finback",
-                 "fin-backed whale"
+                 "Common rorqual",
+                 "Razorback",
+                 "Herring whale",
+                 "Finner",
+                 "Finback",
+                 "Fin-backed whale"
              ],
              "ConservationStatus": {
                  "NCAStatus": "Least concern",
@@ -25,19 +28,23 @@
              "TypeReference": "Linnaeus, C. (1758). Systema Naturae per regna tria naturae, secundum classes, ordines, genera, species, cum characteribus, differentiis, synonymis, locis. Editio decima, reformata. Holmiae : Laurentii Salvii Tom. 1 824 pp.",
              "PestStatus": "Nil",
              "SpeciesEnvironment": "Marine",
-             "image": "../assets/cetaceans/balaenoptera_physalus.png"
+             "image": "https://cdn2.webdamdb.com/1280_0JwXKa06rXjr.png?1505493851",
+             "url": "https://es.wikipedia.org/wiki/Balaenoptera_physalus"
          },
          {
+             "Group": "Whales",
              "ScientificName": "Balaenoptera acutorostrata",
-             "AcceptedCommonName": "dwarf minke whale",
+             "AcceptedCommonName": "Minke whale",
+             "KingdomName": "Animalia",
              "FamilyName": "Balaenopteridae",
              "FamilyCommonName": "baleen whales",
+             "FamilyRank": 990430,
              "IsSuperseded": false,
              "TaxonomyAuthor": "Lacepede, 1804",
              "AlternateCommonName": [
-                 "minke whale",
-                 "little piked whale",
-                 "lesser rorqual"
+                 "Dwarf minke whale",
+                 "Little piked whale",
+                 "Lesser rorqual"
              ],
              "ConservationStatus": {
                  "NCAStatus": "Least concern",
@@ -49,11 +56,14 @@
              "Endemicity": "N",
              "PestStatus": "Nil",
              "SpeciesEnvironment": "Marine",
-             "image": ""
+             "image": "https://cdn2.webdamdb.com/1280_2I2S1LTtfpG4.png?1520023462",
+             "url": "https://es.wikipedia.org/wiki/Balaenoptera_acutorostrata"
          },
          {
+             "Group": "Whales",
              "ScientificName": "Physeter macrocephalus",
-             "AcceptedCommonName": "sperm whale",
+             "AcceptedCommonName": "Sperm whale",
+             "KingdomName": "Animalia",
              "FamilyName": "Physeteridae",
              "FamilyCommonName": "sperm whales",
              "FamilyRank": 990440,
@@ -71,17 +81,22 @@
              "Synonyms": "Physeter catodon",
              "PestStatus": "Nil",
              "SpeciesEnvironment": "Marine",
-             "image": ""
+             "image": "https://cdn2.webdamdb.com/1280_1KVOz8ShyAiU.png?1507836492",
+             "url": "https://es.wikipedia.org/wiki/Physeter_macrocephalus"
          },
          {
+             "Group": "Whales",
              "ScientificName": "Ziphius cavirostris",
              "AcceptedCommonName": "Cuvier's beaked whale",
+             "KingdomName": "Animalia",
              "FamilyName": "Ziphiidae",
              "FamilyCommonName": "beaked whales",
              "FamilyRank": 990460,
              "IsSuperseded": false,
              "TaxonomyAuthor": "Cuvier, 1823",
-             "AlternateCommonName": "goose-beaked whale",
+             "AlternateCommonName": [
+                 "Goose-beaked whale"
+             ],
              "ConservationStatus": {
                  "NCAStatus": "Least concern",
                  "NCAStatusCode": "C",
@@ -90,17 +105,22 @@
              "Endemicity": "N",
              "PestStatus": "Nil",
              "SpeciesEnvironment": "Marine",
-             "image": ""
+             "image": "https://cdn2.webdamdb.com/1280_DTT63VNo4t84.png?1519307417",
+             "url": "https://es.wikipedia.org/wiki/Ziphius_cavirostris"
          },
          {
+             "Group": "Dolphins",
              "ScientificName": "Delphinus delphis",
-             "AcceptedCommonName": "short-beaked common dolphin",
+             "AcceptedCommonName": "Short-beaked common dolphin",
+             "KingdomName": "Animalia",
              "FamilyName": "Delphinidae",
              "FamilyCommonName": "dolphins",
              "FamilyRank": 990470,
              "IsSuperseded": false,
              "TaxonomyAuthor": "Linnaeus, 1758",
-             "AlternateCommonName": "common dolphin",
+             "AlternateCommonName": [
+                 "Common dolphin"
+             ],
              "ConservationStatus": {
                  "NCAStatus": "Least concern",
                  "NCAStatusCode": "C",
@@ -113,11 +133,14 @@
              "TypeReference": "Linnaeus, C. (1758). Systema Naturae per regna tria naturae, secundum classes, ordines, genera, species, cum characteribus, differentiis, synonymis, locis. Editio decima, reformata. Holmiae : Laurentii Salvii Tom. 1 824 pp.",
              "PestStatus": "Nil",
              "SpeciesEnvironment": "Marine",
-             "image": ""
+             "image": "https://cdn2.webdamdb.com/1280_sT9ZuP2eMWP9.png?1540309821",
+             "url": "https://es.wikipedia.org/wiki/Delphinus_delphis"
          },
          {
+             "Group": "Whales",
              "ScientificName": "Globicephala melas",
-             "AcceptedCommonName": "long-finned pilot whale",
+             "AcceptedCommonName": "Long-finned pilot whale",
+             "KingdomName": "Animalia",
              "FamilyName": "Delphinidae",
              "FamilyCommonName": "dolphins",
              "FamilyRank": 990470,
@@ -133,17 +156,22 @@
              "Endemicity": "N",
              "PestStatus": "Nil",
              "SpeciesEnvironment": "Marine",
-             "image": ""
+             "image": "https://cdn2.webdamdb.com/1280_2hhffjShjFc6.png?1519307410",
+             "url": "https://es.wikipedia.org/wiki/Globicephala_melas"
          },
          {
+             "Group": "Dolphins",
              "ScientificName": "Grampus griseus",
              "AcceptedCommonName": "Risso's dolphin",
+             "KingdomName": "Animalia",
              "FamilyName": "Delphinidae",
              "FamilyCommonName": "dolphins",
              "FamilyRank": 990470,
              "IsSuperseded": false,
              "TaxonomyAuthor": "(Cuvier, 1812)",
-             "AlternateCommonName": "grey dolphin",
+             "AlternateCommonName": [
+                 "Grey dolphin"
+             ],
              "ConservationStatus": {
                  "NCAStatus": "Least concern",
                  "NCAStatusCode": "C",
@@ -154,17 +182,22 @@
              "Endemicity": "N",
              "PestStatus": "Nil",
              "SpeciesEnvironment": "Marine",
-             "image": ""
+             "image": "https://cdn2.webdamdb.com/1280_0hwjdtIBN9Bs.png?1508200064",
+             "url": "https://es.wikipedia.org/wiki/Grampus_griseus"
          },
          {
+             "Group": "Whales",
              "ScientificName": "Orcinus orca",
-             "AcceptedCommonName": "killer whale",
+             "AcceptedCommonName": "Killer whale",
+             "KingdomName": "Animalia",
              "FamilyName": "Delphinidae",
              "FamilyCommonName": "dolphins",
              "FamilyRank": 990470,
              "IsSuperseded": false,
              "TaxonomyAuthor": "(Linnaeus, 1758)",
-             "AlternateCommonName": "orca",
+             "AlternateCommonName": [
+                 "Orca"
+             ],
              "ConservationStatus": {
                  "NCAStatus": "Least concern",
                  "NCAStatusCode": "C",
@@ -176,12 +209,14 @@
              "TypeReference": "Linnaeus, C. (1758). Systema Naturae per regna tria naturae, secundum classes, ordines, genera, species, cum characteribus, differentiis, synonymis, locis. Editio decima, reformata. Holmiae : Laurentii Salvii Tom. 1 824 pp.",
              "PestStatus": "Nil",
              "SpeciesEnvironment": "Marine",
-             "image": ""
+             "image": "https://cdn3.webdamdb.com/1280_UD2dG5u0yTE1.png?1524572981",
+             "url": "https://es.wikipedia.org/wiki/Orcinus_orca"
          },
          {
-
+             "Group": "Dolphins",
              "ScientificName": "Tursiops sp.",
-             "AcceptedCommonName": "bottlenose dolphin",
+             "AcceptedCommonName": "Bottlenose dolphin",
+             "KingdomName": "Animalia",
              "FamilyName": "Delphinidae",
              "FamilyCommonName": "dolphins",
              "FamilyRank": 990470,
@@ -196,18 +231,22 @@
              "WetlandStatus": "Wetland Indicator Species",
              "PestStatus": "Nil",
              "SpeciesEnvironment": "Marine",
-             "image": ""
+             "image": "https://cdn2.webdamdb.com/1280_Id0CodXrYn57.png?1517601311",
+             "url": "https://es.wikipedia.org/wiki/Tursiops_truncatus"
          },
          {
+             "Group": "Dolphins",
              "ScientificName": "Stenella coeruleoalba",
-             "AcceptedCommonName": "striped dolphin",
-
+             "AcceptedCommonName": "Striped dolphin",
+             "KingdomName": "Animalia",
              "FamilyName": "Delphinidae",
              "FamilyCommonName": "dolphins",
              "FamilyRank": 990470,
              "IsSuperseded": false,
              "TaxonomyAuthor": "(Meyen, 1833)",
-             "AlternateCommonName": "euphrosyne dolphin",
+             "AlternateCommonName": [
+                 "Euphrosyne dolphin"
+             ],
              "ConservationStatus": {
                  "NCAStatus": "Least concern",
                  "NCAStatusCode": "C",
@@ -218,7 +257,19 @@
              "Endemicity": "N",
              "PestStatus": "Nil",
              "SpeciesEnvironment": "Marine",
-             "image": ""
+             "image": "https://cdn2.webdamdb.com/1280_m3j9e4L09LtS.png?1508201529",
+             "url": "https://es.wikipedia.org/wiki/Stenella_coeruleoalba"
+         },
+         {
+             "Group": "Seals",
+             "ScientificName": "Monachus monachus",
+             "AcceptedCommonName": "Mediterranean monk seal",
+             "KingdomName": "Animalia",
+             "FamilyName": "Phocidae",
+             "FamilyCommonName": "Seals",
+             "SpeciesEnvironment": "Marine",
+             "image": "https://cdn2.webdamdb.com/1280_eW4D5zTpuiCm.png?1507911810",
+             "url": "https://es.wikipedia.org/wiki/Monachus_monachus"
          }
      ]
  }
